@@ -1,13 +1,21 @@
 package main
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"net/http"
+
+	"github.com/labstack/echo/v4"
+)
+
+type Location struct {
+	Name string `json:"name"`
+}
 
 func main() {
-	app := fiber.New()
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
+	e := echo.New()
+	e.GET("/", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, Location{Name: "Tokyo"})
+		// return c.JSONPretty(http.StatusOK, Location{Name: "Tokyo"}, "  ")
 	})
+	e.Logger.Fatal(e.Start(":1323"))
 
-	app.Listen(":3000")
 }
