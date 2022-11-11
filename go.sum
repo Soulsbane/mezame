@@ -1,3 +1,5 @@
+github.com/daichi-m/go18ds v1.12.1 h1:Pjc3IApmN4qtDiovGP9MvMpIzgZle3SHUcNaA5j46bg=
+github.com/daichi-m/go18ds v1.12.1/go.mod h1:wc2dURUr8aMxxC4Mn5ObJGVM7uIKU8JagY4nhtonXq8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
