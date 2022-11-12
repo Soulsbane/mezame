@@ -1,4 +1,4 @@
-package locations
+package drivepaths
 
 import (
 	"fmt"
@@ -6,13 +6,13 @@ import (
 	"github.com/daichi-m/go18ds/maps/hashmap"
 )
 
-type Locations struct { // TODO: Change to DrivePaths
+type DrivePaths struct {
 	pathsFileName string
 	paths         *hashmap.Map[string, bool]
 }
 
-func New(fileName string) *Locations {
-	var locs Locations
+func New(fileName string) *DrivePaths {
+	var locs DrivePaths
 
 	locs.paths = hashmap.New[string, bool]()
 	locs.pathsFileName = fileName
@@ -20,23 +20,23 @@ func New(fileName string) *Locations {
 	return &locs
 }
 
-func (f *Locations) AddPath(path string) {
+func (f *DrivePaths) AddPath(path string) {
 	f.paths.Put(path, true)
 }
 
-func (f *Locations) RemovePath(path string) {
+func (f *DrivePaths) RemovePath(path string) {
 	f.paths.Remove(path)
 }
 
-func (f *Locations) EnablePath(path string) {
+func (f *DrivePaths) EnablePath(path string) {
 	f.paths.Put(path, true)
 }
 
-func (f *Locations) DisablePath(path string) {
+func (f *DrivePaths) DisablePath(path string) {
 	f.paths.Put(path, false)
 }
 
-func (f *Locations) Dump() {
+func (f *DrivePaths) Dump() {
 	for _, key := range f.paths.Keys() {
 		value, _ := f.paths.Get(key)
 		fmt.Println(key, value)
