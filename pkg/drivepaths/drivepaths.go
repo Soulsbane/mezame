@@ -6,7 +6,7 @@ import (
 	"github.com/daichi-m/go18ds/maps/hashmap"
 )
 
-type Locations struct {
+type Locations struct { // TODO: Change to DrivePaths
 	pathsFileName string
 	paths         *hashmap.Map[string, bool]
 }
