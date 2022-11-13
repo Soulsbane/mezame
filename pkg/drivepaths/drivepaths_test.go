@@ -18,6 +18,13 @@ func TestMain(t *testing.T) {
 	paths.Disable("/home")
 	is.Equal(paths.IsEnabled("/home"), false)
 
+	paths.Enable("/home")
+	is.Equal(paths.IsEnabled("/home"), true)
+
+	is.Equal(paths.IsEnabled("/phonehome"), false) // Not found
+
 	paths.Remove("/home")
 	is.Equal(paths.NumPaths(), 1)
+
+	paths.Dump()
 }
