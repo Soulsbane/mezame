@@ -20,25 +20,29 @@ func New(fileName string) *DrivePaths {
 	return &locs
 }
 
-func (f *DrivePaths) AddPath(path string) {
-	f.paths.Put(path, true)
+func (d *DrivePaths) Add(path string) {
+	d.paths.Put(path, true)
 }
 
-func (f *DrivePaths) RemovePath(path string) {
-	f.paths.Remove(path)
+func (d *DrivePaths) Remove(path string) {
+	d.paths.Remove(path)
 }
 
-func (f *DrivePaths) EnablePath(path string) {
-	f.paths.Put(path, true)
+func (d *DrivePaths) Enable(path string) {
+	d.paths.Put(path, true)
 }
 
-func (f *DrivePaths) DisablePath(path string) {
-	f.paths.Put(path, false)
+func (d *DrivePaths) Disable(path string) {
+	d.paths.Put(path, false)
 }
 
-func (f *DrivePaths) Dump() {
-	for _, key := range f.paths.Keys() {
-		value, _ := f.paths.Get(key)
+func (d *DrivePaths) NumPaths() int {
+	return d.paths.Size()
+}
+
+func (d *DrivePaths) Dump() {
+	for _, key := range d.paths.Keys() {
+		value, _ := d.paths.Get(key)
 		fmt.Println(key, value)
 	}
 }
