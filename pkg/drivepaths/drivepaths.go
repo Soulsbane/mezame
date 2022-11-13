@@ -36,6 +36,16 @@ func (d *DrivePaths) Disable(path string) {
 	d.paths.Put(path, false)
 }
 
+func (d *DrivePaths) IsEnabled(path string) bool {
+	value, found := d.paths.Get(path)
+
+	if found {
+		return value
+	}
+
+	return found // True if the key was found false otherwise. The value variable will be nil.
+}
+
 func (d *DrivePaths) NumPaths() int {
 	return d.paths.Size()
 }

@@ -14,6 +14,10 @@ func TestMain(t *testing.T) {
 	paths.Add("/media")
 	is.Equal(paths.NumPaths(), 2)
 
+	is.Equal(paths.IsEnabled("/home"), true)
+	paths.Disable("/home")
+	is.Equal(paths.IsEnabled("/home"), false)
+
 	paths.Remove("/home")
 	is.Equal(paths.NumPaths(), 1)
 }
