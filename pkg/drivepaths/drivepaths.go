@@ -28,6 +28,20 @@ func (d *DrivePaths) Load(fileName string) {
 	d.paths.FromJSON(json)
 }
 
+func (d *DrivePaths) Save(fileName string) {
+	json, err := d.paths.ToJSON()
+
+	if err != nil {
+		fmt.Println("Error processing drive paths: ", err)
+	}
+
+	err = os.WriteFile(fileName, json, 0644)
+
+	if err != nil {
+		fmt.Println("Error loading drive paths: ", err)
+	}
+}
+
 func (d *DrivePaths) Add(path string) {
 	d.paths.Put(path, true)
 }
