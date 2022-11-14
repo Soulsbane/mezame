@@ -2,22 +2,30 @@ package drivepaths
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/daichi-m/go18ds/maps/hashmap"
 )
 
 type DrivePaths struct {
-	pathsFileName string
-	paths         *hashmap.Map[string, bool]
+	paths *hashmap.Map[string, bool]
 }
 
-func New(fileName string) *DrivePaths {
+func New() *DrivePaths {
 	var locs DrivePaths
 
 	locs.paths = hashmap.New[string, bool]()
-	locs.pathsFileName = fileName
-
 	return &locs
+}
+
+func (d *DrivePaths) Load(fileName string) {
+	json, err := os.ReadFile(fileName)
+
+	if err != nil {
+		fmt.Println("Error loading drive paths: ", err)
+	}
+
+	d.paths.FromJSON(json)
 }
 
 func (d *DrivePaths) Add(path string) {

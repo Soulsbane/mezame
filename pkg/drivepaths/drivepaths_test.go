@@ -8,7 +8,7 @@ import (
 
 func TestMain(t *testing.T) {
 	is := is.New(t)
-	paths := New("drivepaths.json")
+	paths := New()
 
 	paths.Add("/home")
 	paths.Add("/media")
