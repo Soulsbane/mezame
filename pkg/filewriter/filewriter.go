@@ -16,3 +16,7 @@ func New() *FileWriter {
 
 	return &writer
 }
+
+func (f *FileWriter) Load(fileName string) {
+	f.paths.Load(fileName)
+}
