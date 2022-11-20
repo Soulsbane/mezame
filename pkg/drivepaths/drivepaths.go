@@ -1,7 +1,9 @@
 package drivepaths
 
 import (
+	"encoding/json"
 	"fmt"
+	"os"
 )
 
 type DrivePaths struct {
@@ -16,27 +18,31 @@ func New() *DrivePaths {
 }
 
 func (d *DrivePaths) Load(fileName string) {
-	// json, err := os.ReadFile(fileName)
+	fileData, err := os.ReadFile(fileName)
 
-	// if err != nil {
-	// 	fmt.Println("Error loading drive paths: ", err)
-	// }
+	if err != nil {
+		fmt.Println("Error loading drive paths file: ", err)
+	}
 
-	// d.paths.FromJSON(json)
+	err = json.Unmarshal(fileData, &d.paths)
+
+	if err != nil {
+		fmt.Println("Failed to unmarshal json: ", err)
+	}
 }
 
 func (d *DrivePaths) Save(fileName string) {
-	// json, err := d.paths.ToJSON()
+	data, err := json.Marshal(d.paths)
 
-	// if err != nil {
-	// 	fmt.Println("Error processing drive paths: ", err)
-	// }
+	if err != nil {
+		fmt.Println("Failed to marshal json: ", err)
+	} else {
+		err = os.WriteFile(fileName, data, 0644)
 
-	// err = os.WriteFile(fileName, json, 0644)
-
-	// if err != nil {
-	// 	fmt.Println("Error loading drive paths: ", err)
-	// }
+		if err != nil {
+			fmt.Println("Error saving to drive paths: ", err)
+		}
+	}
 }
 
 func (d *DrivePaths) Add(path string) {
