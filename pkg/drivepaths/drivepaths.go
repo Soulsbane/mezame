@@ -17,31 +17,23 @@ func New() *DrivePaths {
 	return &locs
 }
 
-func (d *DrivePaths) Load(fileName string) {
+func (d *DrivePaths) Load(fileName string) error {
 	fileData, err := os.ReadFile(fileName)
 
 	if err != nil {
-		fmt.Println("Error loading drive paths file: ", err)
-	}
-
-	err = json.Unmarshal(fileData, &d.paths)
-
-	if err != nil {
-		fmt.Println("Failed to unmarshal json: ", err)
+		return err
+	} else {
+		return json.Unmarshal(fileData, &d.paths)
 	}
 }
 
-func (d *DrivePaths) Save(fileName string) {
+func (d *DrivePaths) Save(fileName string) error {
 	data, err := json.Marshal(d.paths)
 
 	if err != nil {
-		fmt.Println("Failed to marshal json: ", err)
+		return err
 	} else {
-		err = os.WriteFile(fileName, data, 0644)
-
-		if err != nil {
-			fmt.Println("Error saving to drive paths: ", err)
-		}
+		return os.WriteFile(fileName, data, 0644)
 	}
 }
 
