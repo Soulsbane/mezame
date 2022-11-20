@@ -59,7 +59,6 @@ func (d *DrivePaths) IsEnabled(path string) bool {
 	} else {
 		return false
 	}
-
 }
 
 func (d *DrivePaths) NumPaths() int {
