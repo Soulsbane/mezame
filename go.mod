@@ -3,7 +3,6 @@ module github.com/Soulsbane/mezame
 go 1.19
 
 require (
-	github.com/daichi-m/go18ds v1.12.1
 	github.com/labstack/echo/v4 v4.9.1
 	github.com/matryer/is v1.4.0
 )
