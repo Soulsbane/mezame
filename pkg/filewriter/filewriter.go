@@ -1,18 +1,18 @@
 package filewriter
 
-import "github.com/Soulsbane/mezame/pkg/drivepaths"
+import drivepathlist "github.com/Soulsbane/mezame/pkg/drivepathlist"
 
 const (
 	DefaultMezameFileName = ".mezame"
 )
 
 type FileWriter struct {
-	paths *drivepaths.DrivePaths
+	paths *drivepathlist.DrivePathList
 }
 
 func New() *FileWriter {
 	var writer FileWriter
-	writer.paths = drivepaths.New()
+	writer.paths = drivepathlist.New()
 
 	return &writer
 }

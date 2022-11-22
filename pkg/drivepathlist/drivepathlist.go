@@ -1,4 +1,4 @@
-package drivepaths
+package drivepathlist
 
 import (
 	"encoding/json"
@@ -6,18 +6,18 @@ import (
 	"os"
 )
 
-type DrivePaths struct {
+type DrivePathList struct {
 	paths map[string]bool
 }
 
-func New() *DrivePaths {
-	var locs DrivePaths
+func New() *DrivePathList {
+	var locs DrivePathList
 
 	locs.paths = make(map[string]bool)
 	return &locs
 }
 
-func (d *DrivePaths) Load(fileName string) error {
+func (d *DrivePathList) Load(fileName string) error {
 	fileData, err := os.ReadFile(fileName)
 
 	if err != nil {
@@ -27,7 +27,7 @@ func (d *DrivePaths) Load(fileName string) error {
 	}
 }
 
-func (d *DrivePaths) Save(fileName string) error {
+func (d *DrivePathList) Save(fileName string) error {
 	data, err := json.Marshal(d.paths)
 
 	if err != nil {
@@ -37,23 +37,23 @@ func (d *DrivePaths) Save(fileName string) error {
 	}
 }
 
-func (d *DrivePaths) Add(path string) {
+func (d *DrivePathList) Add(path string) {
 	d.paths[path] = true
 }
 
-func (d *DrivePaths) Remove(path string) {
+func (d *DrivePathList) Remove(path string) {
 	delete(d.paths, path)
 }
 
-func (d *DrivePaths) Enable(path string) {
+func (d *DrivePathList) Enable(path string) {
 	d.paths[path] = true
 }
 
-func (d *DrivePaths) Disable(path string) {
+func (d *DrivePathList) Disable(path string) {
 	d.paths[path] = false
 }
 
-func (d *DrivePaths) IsEnabled(path string) bool {
+func (d *DrivePathList) IsEnabled(path string) bool {
 	if _, ok := d.paths[path]; ok {
 		return d.paths[path]
 	} else {
@@ -61,11 +61,11 @@ func (d *DrivePaths) IsEnabled(path string) bool {
 	}
 }
 
-func (d *DrivePaths) NumPaths() int {
+func (d *DrivePathList) NumPaths() int {
 	return len(d.paths)
 }
 
-func (d *DrivePaths) Dump() {
+func (d *DrivePathList) Dump() {
 	for path, enabled := range d.paths {
 		fmt.Printf("%s => %t\n", path, enabled)
 	}

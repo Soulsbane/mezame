@@ -1,4 +1,4 @@
-package drivepaths
+package drivepathlist
 
 import (
 	"testing"
