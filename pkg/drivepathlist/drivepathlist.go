@@ -61,7 +61,7 @@ func (d *DrivePathList) IsEnabled(path string) bool {
 	}
 }
 
-func (d *DrivePathList) NumPaths() int {
+func (d *DrivePathList) Length() int {
 	return len(d.paths)
 }
 

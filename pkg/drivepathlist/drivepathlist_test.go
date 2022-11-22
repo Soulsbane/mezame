@@ -12,7 +12,7 @@ func TestMain(t *testing.T) {
 
 	paths.Add("/home")
 	paths.Add("/media")
-	is.Equal(paths.NumPaths(), 2)
+	is.Equal(paths.Length(), 2)
 
 	is.Equal(paths.IsEnabled("/home"), true)
 	paths.Disable("/home")
@@ -24,7 +24,7 @@ func TestMain(t *testing.T) {
 	is.Equal(paths.IsEnabled("/phonehome"), false) // Not found
 
 	paths.Remove("/home")
-	is.Equal(paths.NumPaths(), 1)
+	is.Equal(paths.Length(), 1)
 
 	paths.Dump()
 }
